@@ -9,6 +9,11 @@
 class IPlayerBase
 {
 public:
+	enum ID
+	{
+		ID_MAIN,
+		ID_PREVIEW
+	};
 	enum STATE
 	{
 		STATE_INVALID,
