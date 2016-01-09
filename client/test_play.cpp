@@ -70,11 +70,13 @@ void CTestPlay::Run(const std::string &strUrl)
 
 	while (true)
 	{
-		if (m_bOnPlay)
+		if (m_bOnError)
 		{
 			break;
 		}
-		if (m_bOnError)
+		int64_t nTime = 0;
+		player.GetPlayTime(nTime);
+		if (nTime > 5*1000)
 		{
 			break;
 		}
