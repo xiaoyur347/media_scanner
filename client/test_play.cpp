@@ -1,3 +1,6 @@
+#define __STDC_FORMAT_MACROS
+#include <inttypes.h>
+#include <stdio.h>
 #include "test_base.h"
 #include "test_factory.h"
 #include "player/player.h"
@@ -68,19 +71,26 @@ void CTestPlay::Run(const std::string &strUrl)
 	player.SetSource(strUrl);
 	player.Play();
 
-	while (true)
+	for (int i = 0; i < 60; i++)
 	{
 		if (m_bOnError)
 		{
-			break;
+			return;
 		}
 		int64_t nTime = 0;
 		player.GetPlayTime(nTime);
+		if (nTime > 0)
+		{
+			printf("time=%" PRId64 "\n", nTime);
+		}
 		if (nTime > 5*1000)
 		{
-			break;
+			if (m_bOnPlay)
+			{
+				break;
+			}
 		}
-		usleep(100 * 1000);
+		usleep(1000 * 1000);
 	}
 }
 
