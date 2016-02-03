@@ -3,10 +3,16 @@
 
 CFileReport::CFileReport()
 {
+	m_strOutput = "1.txt";
 }
 
 CFileReport::~CFileReport()	
 {
+}
+
+void CFileReport::SetOutput(const std::string &output)
+{
+	m_strOutput = output;
 }
 
 void CFileReport::Reset()
@@ -31,7 +37,7 @@ void CFileReport::Flush()
 {
 	m_strReport.append("\r\n");
 
-	std::ofstream fout("1.txt", std::ios::app);
+	std::ofstream fout(m_strOutput.c_str(), std::ios::app);
 	fout << m_strReport;
 	fout.close();
 }

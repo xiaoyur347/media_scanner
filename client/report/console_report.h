@@ -8,6 +8,7 @@ class CConsoleReport : public IReport
 public:
 	CConsoleReport();
 	~CConsoleReport();
+	void SetOutput(const std::string &output){(void)output;}
 	void Reset();
 	void SetName(const std::string &name);
 	void Write(const std::string &key, const std::string &value);

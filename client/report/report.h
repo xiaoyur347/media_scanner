@@ -7,6 +7,7 @@ class IReport
 {
 public:
 	virtual ~IReport() {}
+	virtual void SetOutput(const std::string &output) = 0;
 	virtual void Reset() = 0;
 	virtual void SetName(const std::string &name) = 0;
 	virtual void Write(const std::string &key, const std::string &value) = 0;
